@@ -6,4 +6,7 @@
   <h2>{{a+b}}</h2>
   <hr/>
   <button [disabled]="!listo" (click)="hacerAlgo()">Click me!</button>
+  <hr />
+  <input type="text" placeholder="Tu nombre" [(ngModel)]="nombre"/>
+  Mi nombre es {{nombre}}
 </div>
