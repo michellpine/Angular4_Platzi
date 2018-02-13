@@ -1,14 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 
+import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component'
 
 import { AgmCoreModule } from '@agm/core';
+import { AppResaltarDirective } from './directives/resaltar.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppResaltarDirective
   ],
   imports: [
     BrowserModule,
