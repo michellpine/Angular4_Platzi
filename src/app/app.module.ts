@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component'
 
-import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms"
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,10 @@ import {FormsModule} from "@angular/forms"
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAjNL7_8fvvTCiz8k_iG_xiPrLP8aQyvSI'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
