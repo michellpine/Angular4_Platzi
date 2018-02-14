@@ -1,8 +1,10 @@
 import {  Directive, OnInit, ElementRef, Renderer2, Input } from '@angular/core';
 
-@Directive({ selector: '[appResaltar]' })
+@Directive({
+  selector: '[appResaltar]'
+})
 
-export class AppResaltarDirective implements OnInit {
+export class ResaltarDirective implements OnInit {
   constructor (private elRef: ElementRef, private renderer: Renderer2) {}
   @Input('appResaltar') plan: string;
   ngOnInit() {
@@ -12,4 +14,3 @@ export class AppResaltarDirective implements OnInit {
     }
   }
 }
-  
