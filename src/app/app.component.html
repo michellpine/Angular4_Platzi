@@ -1,20 +1,42 @@
-<!--The content below is only a placeholder and can be replaced.-->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">PlatziSquare!</a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <agm-map [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
 <hr />
-<ul>
-  <ng-container *ngFor="let place of placees">
-    <li *ngIf="place.active" >{{place.nombre}}</li>
-  </ng-container>
-</ul>
-<ul>
-  <ng-container *ngFor="let place of placees; let i = index" [ngSwitch]="place.cercania">
-    <a><li appContarClicks [ngStyle]="{color: (place.active) ? 'black' : 'gray'}" 
-        [ngClass]="{numero_par: (i+1) %2 !==0 }" [appResaltar]="place.plan" >{{place.nombre}} -
-        <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy Cercano</span>
-        <span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
-        <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}">Lejano</span>
-    </li></a>
-  </ng-container>
-</ul>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-8">
+        <h2>Lugares Cercanos</h2>
+          <ul class="list-group">
+              <ng-container *ngFor="let place of placees">
+                <li *ngIf="place.active" class="list-group-item">{{place.nombre}}</li>
+              </ng-container>
+            </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Destacados</h2>
+      </div>
+  </div>
+</div>
