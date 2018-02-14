@@ -8,6 +8,11 @@ import { AgmCoreModule } from '@agm/core';
 import { ResaltarDirective } from './directives/resaltar.directive';
 import { ContarClicksDirective } from './directives/contar-clicks.directive';
 
+const appRoutes: Routes = [
+  {path: '', component: AppComponent},
+  {path: 'place', component: AppComponent}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
