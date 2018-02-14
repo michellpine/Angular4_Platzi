@@ -10,7 +10,7 @@
 </ul>
 <ul>
   <ng-container *ngFor="let place of placees; let i = index" [ngSwitch]="place.cercania">
-    <a appContarClicks><li [ngStyle]="{color: (place.active) ? 'black' : 'gray'}" 
+    <a><li appContarClicks [ngStyle]="{color: (place.active) ? 'black' : 'gray'}" 
         [ngClass]="{numero_par: (i+1) %2 !==0 }" [appResaltar]="place.plan" >{{place.nombre}} -
         <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy Cercano</span>
         <span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
