@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LugaresServices } from '../services/lugares.service';
+import { LugaresService } from '../services/lugares.service';
 
 @Component({
     selector: 'app-crear',
@@ -7,9 +7,12 @@ import { LugaresServices } from '../services/lugares.service';
 })
 export class CrearComponent {
     lugar: any = {};
-    constructor(private lugaresService: LugaresServices) {
+    constructor(private lugaresService: LugaresService) {
     }
     guardarLugar() {
+        this.lugar.id = Date.now();
         this.lugaresService.guardarLugar(this.lugar);
+        alert('Negocio guardado con exito');
+        this.lugar = {};
     }
 }
