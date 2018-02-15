@@ -12,4 +12,3 @@ export class ContarClicksDirective {
         this.opacity += .1;
     }
 }
-
