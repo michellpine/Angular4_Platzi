@@ -7,5 +7,6 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DetalleComponent {
     constructor(private route: ActivatedRoute) {
+        console.log(this.route.snapshot.params['id']);
     }
 }
