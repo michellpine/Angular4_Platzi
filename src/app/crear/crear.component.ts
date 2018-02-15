@@ -10,9 +10,15 @@ export class CrearComponent {
     constructor(private lugaresService: LugaresService) {
     }
     guardarLugar() {
-        this.lugar.id = Date.now();
-        this.lugaresService.guardarLugar(this.lugar);
-        alert('Negocio guardado con exito');
-        this.lugar = {};
+        var direccion = this.lugar.calle + ',' + this.lugar.cuidad + ',' + this.lugar.pais;
+        this.lugaresService.obtenerGeoData(direccion)
+            .subscribe(result => {
+                this.lugar.lat = 0;
+                this.lugar.lng = 0;
+                this.lugar.id = Date.now();
+                this.lugaresService.guardarLugar(this.lugar);
+                alert('Negocio guardado con exito');
+                this.lugar = {};
+            });
     }
 }
