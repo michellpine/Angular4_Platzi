@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LugaresService } from '../services/lugares.service';
+import { mergeNsAndName } from '@angular/compiler';
 
 @Component({
   selector: 'app-lugares',
@@ -13,10 +14,10 @@ export class LugaresComponent {
   constructor(private lugaresServices: LugaresService) {
     lugaresServices.getLugares()
       .subscribe(lugares => {
-        this.lugares = lugares.json();
+        this.lugares = lugares;
         var me = this;
         me.lugares = Object.keys(me.lugares).map(function (key) {
-          return me.lugares[key];
+          return  me.lugares[key];
         });
     });
   }
