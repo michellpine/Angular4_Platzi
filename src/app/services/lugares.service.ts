@@ -21,14 +21,22 @@ export class LugaresService {
     }
 
     public buscarLugar(id) {
-        return this.lugares.filter((lugar) =>  { return lugar.id == id })[0] || null;
+        return this.lugares.filter((lugar) =>  {
+             return lugar.id == id })[0] || null;
     }
     public guardarLugar(lugar) {
-        console.log(lugar);
+        this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
+    }
+
+    public editarLugar(lugar) {
         this.afDB.database.ref('lugares/' + lugar.id).set(lugar);
     }
 
     public obtenerGeoData(direccion) {
         return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + direccion);
+    }
+
+    public getLugar(id) {
+        return this.afDB.object('lugares/' + id);
     }
 }

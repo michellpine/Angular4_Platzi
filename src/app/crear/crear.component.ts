@@ -11,6 +11,12 @@ export class CrearComponent {
     id: any = null;
     constructor(private lugaresService: LugaresService, private route: ActivatedRoute) {
         this.id = this.route.snapshot.params['id'];
+        if (this.id != 'new') {
+            this.lugaresService.getLugar(this.id)
+            .valueChanges().subscribe((lugar) => {
+                this.lugar = lugar;
+            });
+        }
     }
     guardarLugar() {
         var direccion = this.lugar.calle + ',' + this.lugar.cuidad + ',' + this.lugar.pais;
@@ -19,10 +25,14 @@ export class CrearComponent {
                 this.lugar.lat = result.json().results[0].geometry.location.lat;
                 this.lugar.lng = result.json().results[0].geometry.location.lng;
 
-                this.lugar.id = Date.now();
-                this.lugaresService.guardarLugar(this.lugar);
-                alert('Negocio guardado con exito');
-                this.lugar = {};
+                if (this.id != 'new') {
+                    this.lugaresService.editarLugar(this.lugar);
+                }else{
+                    this.lugar.id = Date.now();
+                    this.lugaresService.guardarLugar(this.lugar);
+                    alert('Negocio guardado con exito');
+                }
+               this.lugar = {};
             });
     }
 }
