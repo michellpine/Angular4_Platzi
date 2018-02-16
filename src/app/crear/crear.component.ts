@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LugaresService } from '../services/lugares.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-crear',
@@ -7,14 +8,17 @@ import { LugaresService } from '../services/lugares.service';
 })
 export class CrearComponent {
     lugar: any = {};
-    constructor(private lugaresService: LugaresService) {
+    id: any = null;
+    constructor(private lugaresService: LugaresService, private route: ActivatedRoute) {
+        this.id = this.route.snapshot.params['id'];
     }
     guardarLugar() {
         var direccion = this.lugar.calle + ',' + this.lugar.cuidad + ',' + this.lugar.pais;
         this.lugaresService.obtenerGeoData(direccion)
             .subscribe(result => {
-                this.lugar.lat = 0;
-                this.lugar.lng = 0;
+                this.lugar.lat = result.json().results[0].geometry.location.lat;
+                this.lugar.lng = result.json().results[0].geometry.location.lng;
+
                 this.lugar.id = Date.now();
                 this.lugaresService.guardarLugar(this.lugar);
                 alert('Negocio guardado con exito');

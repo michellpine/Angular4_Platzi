@@ -15,13 +15,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CrearComponent } from './crear/crear.component';
+import { HttpModule } from '@angular/http';
 
 const appRoutes: Routes = [
   {path: '', component: LugaresComponent},
   {path: 'lugares', component: LugaresComponent},
   {path: 'detalle/:id', component: DetalleComponent},
   {path: 'contacto', component: ContactoComponent},
-  {path: 'crear', component: CrearComponent}
+  {path: 'crear/:id', component: CrearComponent}
 ];
 export const firebaseConfig = {
   apiKey: 'AIzaSyClC0gG-TVrIsKUG9pNgqsI8jvkn7LquYE',
@@ -48,10 +49,11 @@ export const firebaseConfig = {
       apiKey: 'AIzaSyAjNL7_8fvvTCiz8k_iG_xiPrLP8aQyvSI'
     }),
     BrowserAnimationsModule,
-      RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]
